@@ -12,7 +12,7 @@ def index_range(page: int, page_size: int) -> Tuple[int, int]:
         return (new_page, page_size)
     else:
         new_page = page - 1
-        return (new_page * page_size, page * page_size)
+        return (new_page * page_size, (new_page * page_size) + page_size)
 
 
 class Server:
@@ -46,6 +46,17 @@ class Server:
         start_index, stop_index = result
 
         if start_index >= file_size:
-            return []  # Return an empty list if start index is out of range
-
+            return []
         return self.dataset()[start_index:stop_index]
+    
+        # result = index_range(page, page_size)
+        # start_index = result[0]
+        # stop_index = result[1]
+
+        # count, return_list = 0, []
+        # while count < page_size and start_index < file_size:
+        #     return_list.append(file[start_index])
+        #     start_index += 1
+        #     count += 1
+
+        # return return_list
