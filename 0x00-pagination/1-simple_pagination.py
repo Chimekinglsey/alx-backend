@@ -57,7 +57,7 @@ class Server:
 
                 count += 1
         return return_list
- 
+
 #         pass
 # data = Server()
 # print(data.get_page(6, 4))
