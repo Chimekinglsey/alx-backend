@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""
-1. Simple pagination
-"""
+
 import csv
 from typing import List, Tuple
 
@@ -51,15 +49,3 @@ class Server:
         if start_index >= file_size:
             return []
         return self.dataset()[start_index:stop_index]
-
-        # result = index_range(page, page_size)
-        # start_index = result[0]
-        # stop_index = result[1]
-
-        # count, return_list = 0, []
-        # while count < page_size and start_index < file_size:
-        #     return_list.append(file[start_index])
-        #     start_index += 1
-        #     count += 1
-
-        # return return_list
