@@ -1,24 +1,23 @@
 #!/usr/bin/env python3
-"""
-1 - simple_pagination.py
-"""
-from typing import Tuple
 import csv
-from typing import List
+from typing import List, Tuple
 
 
-def index_range(page: int, page_size: int) -> Tuple:
-    """Returns a tuples matching the range of indexes """
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
+    """
+    Returns a tuple matching the range of indexes
+    """
     if page <= 0:
         new_page = 0
-        return(new_page, page_size)
+        return (new_page, page_size)
     else:
         new_page = page - 1
-        return(new_page * page_size, page_size)
+        return (new_page * page_size, page * page_size)
 
 
 class Server:
-    """Server class to paginate a database of popular baby names.
+    """
+    Server class to paginate a database of popular baby names.
     """
     DATA_FILE = "Popular_Baby_Names.csv"
 
@@ -26,7 +25,8 @@ class Server:
         self.__dataset = None
 
     def dataset(self) -> List[List]:
-        """Cached dataset
+        """
+        Cached dataset
         """
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
@@ -37,24 +37,15 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        """retrieves items based on pages"""
+        """ Retrieves items based on pages """
+        assert isinstance(page, int) and page > 0
+        assert type(page_size) == int and page_size > 0
+
         file_size = len(self.dataset())
-        file = self.dataset()
-        assert page > 0 and type(page) == int
-        assert type(page_size) == int
-
         result = index_range(page, page_size)
-        start_index = result[0]
+        start_index, stop_index = result
 
-        count, return_list = 0, []
-        while count < page_size and start_index < file_size:
-            return_list.append(file[start_index])
-            start_index += 1
-            count += 1
+        if start_index >= file_size:
+            return []  # Return an empty list if start index is out of range
 
-        return return_list
-
-
-#         pass
-# data = Server()
-# print(data.get_page(6, 4))
+        return self.dataset()[start_index:stop_index]
