@@ -16,8 +16,8 @@ class FIFOCache(Base):
         """sets new key and item to cache """
         if key is not None and item is not None:
             if len(self.cache_data) >= self.MAX_ITEMS:
-                discard_key, _ = self.cache_data.popitem(last=False)
-                print(f"DISCARD: {discard_key}")
+                discard_key = self.cache_data.popitem(last=False)
+                print(f"DISCARD: {discard_key[0]}")
 
             self.cache_data[key] = item
 
