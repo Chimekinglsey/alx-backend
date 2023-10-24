@@ -14,14 +14,11 @@ class FIFOCache(Base):
 
     def put(self, key, item):
         """sets new key and item to cache """
-        if key is None or item is None:
-            pass
-        elif len(self.cache_data) <= Base.MAX_ITEMS:
-            self.cache_data[key] = item
+        if key is not None and item is not None:
+            if len(self.cache_data) >= self.MAX_ITEMS:
+                discard_key, _ = self.cache_data.popitem(last=False)
+                print(f"DISCARD: {discard_key}")
 
-        else:
-            discard = self.cache_data.popitem(last=False)[0]
-            print(f"DISCARD: {discard}")
             self.cache_data[key] = item
 
     def get(self, key):
