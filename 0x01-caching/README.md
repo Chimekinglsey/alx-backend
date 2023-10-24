@@ -1,0 +1,3 @@
+Caching is a computer designed targeted at reducing the latency of fetch operations for the processor. This is achieved by storing frequently accessed data in  a small memory close to the processor.
+While new data is requested, various means of discarding data stored already (known as caching algorithm) is required. They inlude FIFO, LIFO, LRU, LFU, MRU, SLRU and so many more.
+In this project we will be coding our own caching algorithm using Python
