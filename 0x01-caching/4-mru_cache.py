@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-3. Most Recently Used Caching
+4. Most Recently Used Caching
 """
 from collections import OrderedDict
 from base_caching import BaseCaching
