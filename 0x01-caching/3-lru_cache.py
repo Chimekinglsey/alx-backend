@@ -25,6 +25,7 @@ class LRUCache(BaseCaching):
                 if len(self.cache_data) >= self.MAX_ITEMS:
                     lru_key, lru_val = self.cache_data.popitem(last=False)
                     self.access_log.pop(lru_key)
+                    print(f"DISCARD: {lru_key}")
 
             self.cache_data[key] = item
 
