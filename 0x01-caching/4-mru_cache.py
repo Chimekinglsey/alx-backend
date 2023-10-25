@@ -23,7 +23,7 @@ class MRUCache(BaseCaching):
             else:
                 self.access_log[key] = 0
                 if len(self.cache_data) >= self.MAX_ITEMS:
-                    mru_key,mru_val = self.cache_data.popitem(last=False)
+                    mru_key, mru_val = self.cache_data.popitem(last=True)
                     self.access_log.pop(mru_key)
                     print(f"DISCARD: {mru_key}")
 
@@ -33,6 +33,6 @@ class MRUCache(BaseCaching):
         """Get an item from the cache by key"""
         if key is not None and key in self.cache_data:
             self.access_log[key] += 1
-            self.cache_data.move_to_end(key, last=False)
+            self.cache_data.move_to_end(key, last=True)
             return self.cache_data[key]
         return None
