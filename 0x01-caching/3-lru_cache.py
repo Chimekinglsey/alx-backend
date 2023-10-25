@@ -3,39 +3,35 @@
 3. Least Recently Used Caching
 """
 from collections import OrderedDict
-from base_caching import BaseCaching as Base
+from base_caching import BaseCaching
 
 
-class LRUCache(Base):
-    """A caching system that removes
-        Least Recently Used items from cache
-    """
-    access_log = {}
-    get_count = 0
-
+class LRUCache(BaseCaching):
+    """A caching system that removes Least Recently Used items from cache"""
     def __init__(self):
+        """Initialize the LRUCache"""
         super().__init__()
         self.cache_data = OrderedDict()
+        self.access_log = {}
 
     def put(self, key, item):
-        """sets new key and item to cache """
-        for k,v in self.cache_data.items():
-            if not self.access_log.get(k[1]):
-                self.access_log[k] = [v, self.get_count]
+        """Add an item to the cache"""
         if key is not None and item is not None:
-            if len(self.cache_data) >= self.MAX_ITEMS:
-                for k,v in self.access_log.items():
-                    lru = min(k[1])
-                discard_key = self.cache_data.pop(lru)
-                print(f"DISCARD: {discard_key}")
+            if key in self.cache_data:
+                self.access_log[key] += 1
+                self.cache_data.move_to_end(key)
+            else:
+                self.access_log[key] = 0
+                if len(self.cache_data) >= self.MAX_ITEMS:
+                    lru_key, lru_val = self.cache_data.popitem(last=False)
+                    self.access_log.pop(lru_key)
+
             self.cache_data[key] = item
 
     def get(self, key):
-        """ retrieves a key if present in cache """
-        if key is None or not self.cache_data.get(key):
-            return None
-        for k,v in self.cache_data.items():
-            self.access_log[k] = [v, self.get_count]
-            if key == k:
-                self.access_log[k[1]] += 1
-        return self.cache_data[key]
+        """Get an item from the cache by key"""
+        if key is not None and key in self.cache_data:
+            self.access_log[key] += 1
+            self.cache_data.move_to_end(key)
+            return self.cache_data[key]
+        return None
