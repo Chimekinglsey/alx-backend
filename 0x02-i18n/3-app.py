@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-2. Get locale from setup
+1. Basic Babel setup
 """
 from flask import Flask, render_template, request
-from flask_babel import Babel, _
+from flask_babel import Babel, gettext
 
 
 app = Flask(__name__)
@@ -22,11 +22,8 @@ app.config.from_object(Config)
 
 @app.route('/')
 def index():
-    title = _('Welcome to Holberton')
-    header = _('Hello world')
     """Home Page"""
-    return render_template('2-index.html', home_title=title,
-                           home_header=header)
+    return render_template('1-index.html')
 
 
 @babel.localeselector

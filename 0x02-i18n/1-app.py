@@ -3,7 +3,7 @@
 1. Basic Babel setup
 """
 from flask import Flask, render_template
-from flask_babel import Babel
+from flask_babel import Babel, _
 
 
 app = Flask(__name__)
@@ -25,8 +25,11 @@ app.config.from_object(Config)
 
 @app.route('/')
 def index():
+    title = _('Welcome to Holberton')
+    header = _('Hello world')
     """Home Page"""
-    return render_template('1-index.html')
+    return render_template('1-index.html', home_title=title,
+                           home_header=header)
 
 
 if __name__ == '__main__':
