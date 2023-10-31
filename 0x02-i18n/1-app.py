@@ -8,18 +8,19 @@ import pytz
 
 
 app = Flask(__name__)
-# app.config['LANGUAGES'] = ["en", "fr"]
-# app.config['BABEL_DEFAULT_LOCALE'] = 'en'
-# app.config['BABEL_DEFAULT_TIMEZONE'] = 'UTC'
+babel = Babel(app)
 
 
 class Config:
+    """Configs for Babel"""
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
 
 
-babel = Babel(app, config=Config)
+app.config['LANGUAGES'] = Config.LANGUAGES
+app.config['BABEL_DEFAULT_LOCALE'] = Config.BABEL_DEFAULT_LOCALE
+app.config['BABEL_DEFAULT_TIMEZONE'] = Config.BABEL_DEFAULT_TIMEZONE
 
 
 @app.route('/')
