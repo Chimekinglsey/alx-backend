@@ -1,0 +1,2 @@
+I18n and l10n refers to internationalization and localization respectively. This is a way of making applications more user-centered by  adapting applications to user preferences such as user laguaguage and local time.
+In this project, we will create a basic web-application that mirrors internationalization and localization
