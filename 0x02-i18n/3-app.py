@@ -23,10 +23,7 @@ app.config.from_object(Config)
 @app.route('/')
 def index() -> str:
     """Home Page"""
-    home_title = _('Welcome to Holberton')
-    home_header = _('Hello world')
-    return render_template('3-index.html', home_title=home_title,
-                           home_header=home_header)
+    return render_template('3-index.html')
 
 
 @babel.localeselector
