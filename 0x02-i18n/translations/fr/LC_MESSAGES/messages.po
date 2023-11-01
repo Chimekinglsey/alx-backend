@@ -1,15 +1,15 @@
-# French translations for PROJECT.
+# French translations for 0x02-i18n.
 # Copyright (C) 2023 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+# FIRST AUTHOR <onlinekingsley@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PROJECT VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"Project-Id-Version: 0x02-i18n VERSION\n"
+"Report-Msgid-Bugs-To: onlinekingsley@gmail.com\n"
 "POT-Creation-Date: 2023-11-01 00:36+0100\n"
 "PO-Revision-Date: 2023-11-01 00:36+0100\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Last-Translator: Chime Kingsley <onlinekingsley@gmail.com>\n"
 "Language: fr\n"
 "Language-Team: fr <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
