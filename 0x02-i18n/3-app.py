@@ -21,7 +21,7 @@ app.config.from_object(Config)
 
 
 @app.route('/')
-def index():
+def index() -> str:
     """Home Page"""
     title = _('Welcome to Holberton')
     header = _('Hello world')
@@ -30,7 +30,7 @@ def index():
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     """Determine the best match from supported languages"""
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 

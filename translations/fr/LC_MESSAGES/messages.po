@@ -1,14 +1,14 @@
-# French translations for i18n.
+# French translations for 0x02-i18n.
 # Copyright (C) 2023 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <onlinekingsley@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: i18n VERSION\n"
+"Project-Id-Version: 0x02-i18n VERSION\n"
 "Report-Msgid-Bugs-To: onlinekingsley@gmail.com\n"
-"POT-Creation-Date: 2023-11-01 01:13+0100\n"
-"PO-Revision-Date: 2023-11-01 01:14+0100\n"
+"POT-Creation-Date: 2023-11-01 00:36+0100\n"
+"PO-Revision-Date: 2023-11-01 00:36+0100\n"
 "Last-Translator: Chime Kingsley <onlinekingsley@gmail.com>\n"
 "Language: fr\n"
 "Language-Team: fr <LL@li.org>\n"
