@@ -3,7 +3,7 @@
 3. Parametrize templates
 """
 from flask import Flask, render_template, request
-from flask_babel import Babel
+from flask_babel import Babel, _
 
 
 app = Flask(__name__)
@@ -20,16 +20,19 @@ class Config:
 app.config.from_object(Config)
 
 
+@app.route('/')
+def index() -> str:
+    """Home Page"""
+    home_title = _('Welcome to Holberton')
+    home_header = _('Hello world')
+    return render_template('3-index.html', home_title=home_title,
+                           home_header=home_header)
+
+
 @babel.localeselector
 def get_locale() -> str:
     """Determine the best match from supported languages"""
     return request.accept_languages.best_match(app.config['LANGUAGES'])
-
-
-@app.route('/')
-def index() -> str:
-    """Home Page"""
-    return render_template('3-index.html')
 
 
 if __name__ == '__main__':
