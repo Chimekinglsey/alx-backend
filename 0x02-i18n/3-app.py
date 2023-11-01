@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-4. Force locale with URL parameter
+3. Parametrize templates
 """
 from flask import Flask, render_template, request
 from flask_babel import Babel
@@ -23,16 +23,13 @@ app.config.from_object(Config)
 @babel.localeselector
 def get_locale() -> str:
     """Determine the best match from supported languages"""
-    locale = request.args.get('locale')
-    if locale and locale in app.config['LANGUAGES']:
-        return locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
 @app.route('/')
 def index() -> str:
     """Home Page"""
-    return render_template('4-index.html')
+    return render_template('3-index.html')
 
 
 if __name__ == '__main__':
