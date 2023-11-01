@@ -5,6 +5,7 @@
 from flask import g
 from flask import Flask, render_template, request
 from flask_babel import Babel
+import pytz
 
 
 app = Flask(__name__)
@@ -68,10 +69,23 @@ def get_locale() -> str:
     return request.accept_languages.best_match(app.config["LANGUAGES"])
 
 
+@babel.timezoneselector
+def get_timezone() -> str:
+    """Retrieves the timezone for a web page.
+    """
+    timezone = request.args.get('timezone', '').strip()
+    if not timezone and g.user:
+        timezone = g.user['timezone']
+    try:
+        return pytz.timezone(timezone).zone
+    except pytz.exceptions.UnknownTimeZoneError:
+        return app.config['BABEL_DEFAULT_TIMEZONE']
+
+
 @app.route('/')
 def index() -> str:
     """Home Page"""
-    return render_template('6-index.html')
+    return render_template('7-index.html')
 
 
 if __name__ == '__main__':
